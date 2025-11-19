@@ -6,18 +6,18 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class EmployLeaveDaoImp implements EmployLeaveDao {
-    private static final List<EmployLeave> employLeaveList = new ArrayList<>();
+    static List<EmployLeave> employLeaveList;
+    static {
+        employLeaveList = new ArrayList<>();
+    }
 
     @Override
     public List<EmployLeave> getAllEmployLeaveDao() {
-        return new ArrayList<>(employLeaveList);
+        return employLeaveList;
     }
 
     @Override
     public String addEmployLeaveDao(EmployLeave employLeave) {
-        if (searchEmployLeaveDao(employLeave.getLeaveId()) != null) {
-            return "Leave with id " + employLeave.getLeaveId() + " already exists.";
-        }
         employLeaveList.add(employLeave);
         return "Employ Leave Added";
     }
