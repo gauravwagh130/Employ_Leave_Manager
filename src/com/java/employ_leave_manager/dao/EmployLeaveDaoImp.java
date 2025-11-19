@@ -39,7 +39,7 @@ public class EmployLeaveDaoImp implements EmployLeaveDao {
 
     @Override
     public String deleteEmployLeaveDao(int leaveId) {
-        EmployLeave employLeaveFound =searchEmployLeaveDao(leaveId);
+        EmployLeave employLeaveFound = searchEmployLeaveDao(leaveId);
         if (employLeaveFound != null){
             employLeaveList.remove(employLeaveFound);
             return "Leave Record deleted";

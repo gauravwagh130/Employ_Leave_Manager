@@ -21,7 +21,7 @@ public class EmployLeaveBal {
     }
 
     public String addEmployLeaveBal(EmployLeave employLeave) throws EmployLeaveException {
-        if (validateLeave(employLeave)) {
+        if (validateLeave(employLeave) == true) {
             employLeave.setAppliedOn(toDate(LocalDate.now()));
             employLeave.setNoOfDays(calculateNoOfDays(employLeave.getLeaveStartDate(), employLeave.getLeaveEndDate()));
             return employLeaveDao.addEmployLeaveDao(employLeave);
@@ -49,8 +49,7 @@ public class EmployLeaveBal {
 
     public boolean validateLeave(EmployLeave employLeave) {
         boolean isValid = true;
-        sb.setLength(0);
-
+        
         if (employLeave == null) {
             sb.append("EmployLeave cannot be null.");
            isValid = false;
